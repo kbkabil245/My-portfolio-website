@@ -230,6 +230,52 @@ header.sticky {
     text-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
 }
 
+@keyframes slideDown {
+from {
+   opacity: 0;
+   transform: translateY(-50px);
+}
+  to {
+     opacity: 1;
+     transform: translateY(0);
+  }
+
+}
+.about-me-container {
+    animation: slideDown 1s ease-out;
+}
+.about-me-text {
+    animation: slideDown 1s ease-out 0.5;
+}
+.reveal {
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+.delay-3 { transition-delay: 1.2s;}
+.delay-4 { transition-delay: 1.5; }
+
+/* General Reveal style */
+.reveal {
+opacity: 0;
+transform: translateY(50px);
+transition: all 1s ease-out;
+}
+
+/* Delay kudukkura CSS */
+.reveal.active {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Ovoru element-kum different delay */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+.delay-4 { transition-delay: 0.8s; }
+.delay-5 { transition-delay: 0.10s; }
+
 /* Hero Avatar Container */
 .hero-avatar {
     position: relative;
@@ -957,4 +1003,3 @@ Scroll-to-Top Button
         height: 46px;
     }
 }
-

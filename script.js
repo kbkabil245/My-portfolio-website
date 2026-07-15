@@ -178,3 +178,10 @@ document.getElementById('run-sim-btn').addEventListener('click', function() {
     printNextLog();
 });
 
+const sr = scrollReveal({
+    distance: '80px', 
+    duration: 5000, 
+    delay: 300,
+    reset: true
+});
+sr.reveal('.reveal', { origin: 'top' });

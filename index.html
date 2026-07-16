@@ -34,59 +34,6 @@
                     <span class="nav-indicator" id="navIndicator"></span>
                 </ul>
             </nav>
-            <script>
-
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const navIndicator = document.getElementById('navIndicator');
-
-            function moveNavIndicator(activeLink) {
-                if (!navIndicator || !activeLink) return;
-                navIndicator.style.left = activeLink.offsetLeft + 'px';
-                navIndicator.style.width = activeLink.offsetWidth + 'px';
-                navIndicator.classList.add('visible');
-            }
-
-            function runScrollSpy() {
-                // Default to the first section (Home) instead of an empty
-                // string - an empty string is a substring of every link's
-                // href, so it used to match ALL links and the indicator
-                // always ended up on the last one (Contact).
-                let current = sections.length ? sections[0].getAttribute('id') : "";
-                const scrollPosition = window.scrollY || window.pageYOffset;
-                const reachedBottom = (window.innerHeight + scrollPosition) >= (document.documentElement.scrollHeight - 4);
-
-                if (reachedBottom && sections.length) {
-                    current = sections[sections.length - 1].getAttribute('id');
-                } else {
-                    sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        if (scrollPosition >= sectionTop - 150) {
-                            current = section.getAttribute('id');
-                        }
-                    });
-                }
-
-                let activeLink = null;
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    // Exact match instead of .includes() - substring matching
-                    // was part of the same bug above.
-                    if (link.getAttribute('href') === '#' + current) {
-                        link.classList.add('active');
-                        activeLink = link;
-                    }
-                });
-
-                moveNavIndicator(activeLink);
-            }
-
-            window.addEventListener('scroll', runScrollSpy);
-            window.addEventListener('resize', () => {
-                moveNavIndicator(document.querySelector('.nav-link.active'));
-            });
-            window.addEventListener('load', runScrollSpy);
-         </script>
         </header>
 
         <!-- Home Section -->
